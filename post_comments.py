@@ -46,14 +46,16 @@ with open(sys.argv[1], 'r') as diff:
     multi_line_comment = False
     comments = []
     bracket_count = 0
+    file_start = False
     for line in diff:
         if line.startswith("diff"):
             # diff --git a/relative/path b/relative/path
             path = line.split()[3].strip("b/")
             in_reply_to = None
-        elif line.startswith("@@"):
+            file_start = True
+        elif file_start and line.startswith("@@"):
             position = 0
-            in_reply_to = None
+            file_start = False
         elif line.strip().startswith("{##"):
             bracket_count += 1
             # {##<comment-id> I think blah blah blah. ##}

@@ -13,6 +13,12 @@ The script will query the Github API for the PR comments, extract the comments b
 and print out a copy of the diff file that includes the comments in the appropriate spot.
 """
 
+# TODO: There's a bug in here, where the script finds the *first* line in the diff that matches
+# the request. That's because we're using a rather naive search. What we should do instead is
+# find the position in the diff. That will require a bit more involved use of the data from
+# Github however (we'll need to extract the file, find it, and then count positions). So
+# I'll work on this in lunch tomorrow.
+
 import json
 import requests
 import sys
@@ -38,7 +44,7 @@ while github_url:
     else:
         for link, rel in links:
             if rel.split("=")[1].strip('"') == "next":
-                github_url = link.strip("<").strip(">")
+                github_url = link.strip().strip("<").strip(">")
 
 commented_line = None
 for comment in comments_blob:
@@ -54,6 +60,6 @@ for comment in comments_blob:
             commented_line = None
             break
     if commented_line:
-        sys.stderr.write("WARNING: Failed to find blob for " + diff_hunk[0] + " body: " + comment["body"])
+        sys.stderr.write("\nWARNING: Failed to find blob for " + diff_hunk[0] + " body: " + comment["body"] + "\n")
 
 print(''.join(diff_lines))
