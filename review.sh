@@ -6,4 +6,4 @@
 
 # The script takes a single argument: the branch to diff
 # the current branch against.
-git diff --no-color --patience --minimal --word-diff=plain $1
+git diff --no-color --patience $1

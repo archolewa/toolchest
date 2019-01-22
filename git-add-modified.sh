@@ -1,3 +1,3 @@
 #!/bin/bash
 
-git add `git status | ag modified | cut -d ":" -f 2`
+git add `git status | fgrep modified | cut -d ":" -f 2`

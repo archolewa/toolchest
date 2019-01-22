@@ -4,4 +4,4 @@ BRANCH=$1
 if [ -z $1 ]; then
  BRANCH="origin" 
 fi
-git push $BRANCH `git branch | ag "\*" | cut -d " " -f 2`
+git push $BRANCH `git branch | fgrep "\*" | cut -d " " -f 2`
