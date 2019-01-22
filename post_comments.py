@@ -1,4 +1,4 @@
-#! /usr/local/bin/python
+#! /home/y/bin/python
 """
 A script that takes five arguments:
 1. The absolute path to the diff file to read.

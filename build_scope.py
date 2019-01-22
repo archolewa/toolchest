@@ -1,4 +1,4 @@
-#! /usr/local/bin/python
+#! /home/y/bin/python
 """
 This script builds the dependency tree for a Java project for use in determining
 whether a given tag is in scope in the current file.
