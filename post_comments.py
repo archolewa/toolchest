@@ -1,4 +1,4 @@
-#! /home/y/bin/python
+#! /usr/bin/python
 """
 A script that takes five arguments:
 1. The absolute path to the diff file to read.
@@ -95,7 +95,7 @@ with open(sys.argv[1], 'r') as diff:
         else:
             position += 1
     if bracket_count > 0:
-        sys.stderr.write("Unbalanced {##. Aborting. Num unbalanced brackets: " + str(bracket_count))
+        sys.stderr.write("Unbalanced {##. Aborting. Num unbalanced brackets: " + str(bracket_count) + "\n Offending comment: " + "\n".join(body) + "\n")
     else:
         for comment in comments:
             post(comment)

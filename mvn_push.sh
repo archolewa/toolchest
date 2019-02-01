@@ -2,4 +2,4 @@
 
 # Runs tests in a maven project before pushing.
 
-mvn clean test && mvn clean && push.sh
+mvn -q test && mvn -q clean && push.sh
