@@ -4,10 +4,11 @@
 # already exist.
 if [ ! -d "$1/tide-sources" ]
 then
-    if test -n "$(find . -maxdepth 1 -name '*-sources.jar' -print -quit)"
+    cd $1
+    SOURCES_JAR=$(find . -maxdepth 2 -name '*-sources.jar' -print -quit | head -n1)
+    if test -n "$SOURCES_JAR"
     then
-        cd $1
-        unzip -qq -n -d tide-sources '*-sources.jar'
-        cd -
+        unzip -qq -n -d tide-sources $SOURCES_JAR
     fi
+    cd -
 fi

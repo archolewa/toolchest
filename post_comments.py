@@ -10,7 +10,7 @@ A script that takes five arguments:
 7. The github API to use (i.e. api.github.com or corporate.host.name/api)
 
 The script extracts comments prefixed with `{##` from the specified (commented)
-diff file and posts them to the specified pull request using the git.ouroath 
+diff file and posts them to the specified pull request using the git.ouroath
 Github API.
 """
 import requests
@@ -62,7 +62,7 @@ with open(sys.argv[1], 'r') as diff:
             in_reply_to = line.split()[0].strip("{##").strip()
             comment = line.strip().strip("{##").strip("##}").strip()
             if in_reply_to:
-                # Strip out the comment ID from the comment if one 
+                # Strip out the comment ID from the comment if one
                 # exists.
                 comment = " ".join(comment.split()[1:])
             multi_line_comment = not line.strip().endswith("##}")
