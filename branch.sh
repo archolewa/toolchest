@@ -1,3 +1,3 @@
 #! /bin/sh
-# Simple shortcut for partially completing a git branch name.
-git branch | fgrep $1 | cut -d "*" -f 2
+# Simple shortcut for showing a list of branch names
+git branch $1
