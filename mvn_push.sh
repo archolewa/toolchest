@@ -2,4 +2,4 @@
 
 # Runs tests in a maven project before pushing.
 
-mvn -q test && push.sh
+mvn -q -B test && push.sh

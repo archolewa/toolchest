@@ -10,10 +10,13 @@ some transformations to make it easier to work with:
 import os.path
 
 classpaths = []
-with open(".raw-classpath", "r") as classpathfile:
-    for classpath in classpathfile:
-        classpaths.append("\n".join(set(os.path.dirname(jar) for jar in classpath.split(":"))))
-
-classpaths = "\n".join(classpaths)
-with open(".classpath", "w") as classpathfile:
-   classpathfile.write(classpaths)
+try:
+    with open(".raw-classpath", "r") as classpathfile:
+        for classpath in classpathfile:
+            classpaths.append("\n".join(set(os.path.dirname(jar) for jar in classpath.split(":"))))
+except IOError:
+    print(".raw-classpath does not exist. Skipping cleanup.")
+else:
+    classpaths = "\n".join(classpaths)
+    with open(".classpath", "w") as classpathfile:
+        classpathfile.write(classpaths)

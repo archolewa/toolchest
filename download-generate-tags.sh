@@ -13,3 +13,4 @@ download_sources.sh
 unzip-all-sources.sh
 tag-all-sources.sh $1
 generate-source-tags.sh ~/tide-sources/java $1
+build-package-filenames.py

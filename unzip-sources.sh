@@ -10,5 +10,5 @@ then
     then
         unzip -qq -n -d tide-sources $SOURCES_JAR
     fi
-    cd -
+    cd - > /dev/null
 fi
