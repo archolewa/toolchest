@@ -18,7 +18,7 @@ fi
 
 mkdir -p ~/reviews/$REPO
 num=$(get-pr-number.sh $ORGANIZATION $REPO $BRANCH)
-curl -s -1 -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.diff" https://api.github.com/v3/repos/$ORGANIZATION/$REPO/pulls/$num > ~/reviews/$REPO/pr-$BRANCH.diff
+curl -s -1 -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/vnd.github.v3.diff" https://api.github.com/repos/$ORGANIZATION/$REPO/pulls/$num > ~/reviews/$REPO/pr-$BRANCH.diff
 extract_comments.py ~/reviews/$REPO/pr-$BRANCH.diff $ORGANIZATION $REPO $num $GITHUB_TOKEN api.github.com > ~/reviews/$REPO/pr-$BRANCH.comments.diff
 rm -f ~/reviews/$REPO/pr-$BRANCH.diff
 home_directory=$(echo ~)

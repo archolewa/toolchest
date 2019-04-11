@@ -1,4 +1,4 @@
-#! /bin/sh 
+#! /bin/sh
 # A simple script (rather than an alias so that I can
 # access it in vim) to generate git diffs in the format
 # that I like: without colors, and character sequences
@@ -6,4 +6,4 @@
 
 # The script takes a single argument: the branch to diff
 # the current branch against.
-git diff --no-color --patience $1
+git diff --no-color --patience --word-diff=plain $1

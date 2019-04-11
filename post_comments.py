@@ -17,7 +17,7 @@ import requests
 import json
 import sys
 
-github_url = "https://%s/v3/repos/%s/%s/pulls/%s/comments" % (sys.argv[7], sys.argv[2], sys.argv[3], sys.argv[4])
+github_url = "https://%s/repos/%s/%s/pulls/%s/comments" % (sys.argv[7], sys.argv[2], sys.argv[3], sys.argv[4])
 
 def post(comment):
     payload = {}

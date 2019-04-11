@@ -1,4 +1,5 @@
-#! /usr/bin/python
+#! /usr/local/bin/python
+
 """
 A script that takes five arguments:
 1. The absolute path to the diff file to read.
@@ -25,12 +26,12 @@ import sys
 with open(sys.argv[1], 'r') as diff_file:
     diff_lines = diff_file.readlines()
 
-github_url = "https://%s/v3/repos/%s/%s/pulls/%s/comments?sort=created&direction=desc" % (sys.argv[6], sys.argv[2], sys.argv[3], sys.argv[4])
+github_url = "https://%s/repos/%s/%s/pulls/%s/comments?sort=created&direction=desc" % (sys.argv[6], sys.argv[2], sys.argv[3], sys.argv[4])
 comments_blob = []
 while github_url:
     request = requests.get(github_url, auth=("token", sys.argv[5]))
     if request.status_code != 200:
-        sys.stderr.write("Failed request: " + request)
+        sys.stderr.write("Failed request: " + str(request))
         sys.exit(1)
 
     comments_blob.extend(request.json())
@@ -60,5 +61,4 @@ for comment in comments_blob:
             break
     if commented_line:
         sys.stderr.write("\nWARNING: Failed to find blob for " + diff_hunk[0] + " body: " + comment["body"] + "\n")
-
-print(''.join(diff_lines))
+print(''.join(diff_lines).encode("utf-8"))
