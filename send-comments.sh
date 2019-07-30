@@ -16,4 +16,4 @@ fi
 
 num=$(get-pr-number.sh $ORGANIZATION $REPO $BRANCH)
 commit_id=$(git rev-parse HEAD)
-post_comments.py ~/reviews/$REPO/pr-$BRANCH.comments.diff $ORGANIZATION $REPO $num $commit_id $GITHUB_TOKEN api.github.com
+post_comments.py ~/reviews/$REPO/pr-$BRANCH.github.diff $ORGANIZATION $REPO $num $commit_id $GITHUB_TOKEN api.github.com

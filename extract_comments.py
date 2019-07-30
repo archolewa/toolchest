@@ -49,7 +49,7 @@ while github_url:
 commented_line = None
 for comment in comments_blob:
     # If a comment doesn't have a position, it's outdated.
-    if not comment["position"]:
+    if not comment["position"] and not comment["original_position"]:
         continue
     diff_hunk = comment["diff_hunk"].split("\n")
     commented_line = diff_hunk[-1].strip("+").strip("-").strip()
@@ -59,6 +59,6 @@ for comment in comments_blob:
             diff_lines.insert(line_num+1, "{#%s %s:%s #}\n" % (comment["id"], comment["user"]["login"], comment["body"]))
             commented_line = None
             break
-    if commented_line:
+    if commented_line and comment["position"]:
         sys.stderr.write("\nWARNING: Failed to find blob for " + diff_hunk[0] + " body: " + comment["body"] + "\n")
 print(''.join(diff_lines).encode("utf-8"))

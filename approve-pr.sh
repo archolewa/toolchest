@@ -17,4 +17,4 @@ else
 fi
 num=$(get-pr-number.sh $ORGANIZATION $REPO $BRANCH)
 PAYLOAD='{"event":"APPROVE"}'
-curl -XPOST -1 -H "Authorization: token $GITHUB_TOKEN" --data-binary "$PAYLOAD" https://api.github.com/v3/repos/$ORGANIZATION/$REPO/pulls/$num/reviews
+curl -XPOST -1 -H "Authorization: token $GITHUB_TOKEN" --data-binary "$PAYLOAD" https://api.github.com/repos/$ORGANIZATION/$REPO/pulls/$num/reviews

@@ -6,4 +6,4 @@
 
 # The script takes a single argument: the branch to diff
 # the current branch against.
-git diff --no-color --patience --word-diff=plain $1
+git diff -D --no-color --patience --word-diff=plain --src-prefix="" --dst-prefix="" -W $1 
