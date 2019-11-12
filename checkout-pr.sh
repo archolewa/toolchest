@@ -31,5 +31,5 @@ if [[ "$ORIGIN_OWNER" = "$REMOTE" ]]
 then
     REMOTE="origin"
 fi
-git checkout $BRANCH && git pull $REMOTE $BRANCH
+git fetch $REMOTE && git checkout $BRANCH && git pull $REMOTE $BRANCH
 rm /tmp/pr_information.json
