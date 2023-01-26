@@ -1,4 +1,4 @@
-#! /usr/local/bin/python
+#! /Users/acholewa/python_virtualenvs/oath_tools/bin/python
 """
 A script that takes five arguments:
 1. The absolute path to the diff file to read.
@@ -21,7 +21,7 @@ github_url = "https://%s/repos/%s/%s/pulls/%s/comments" % (sys.argv[7], sys.argv
 
 def post(comment):
     payload = {}
-    if comment.has_key("in_reply_to") and comment["in_reply_to"]:
+    if "in_reply_to" in comment and comment["in_reply_to"]:
         payload = {
             "body": comment["body"],
             "in_reply_to": int(comment["in_reply_to"])
@@ -48,8 +48,8 @@ with open(sys.argv[1], 'r') as diff:
     bracket_count = 0
     file_start = False
     for line in diff:
-        if line.startswith("diff"):
-            # diff --git a/relative/path b/relative/path
+        if line.startswith("b'diff"):
+            # b'diff --git a/relative/path b/relative/path
             path = line.split()[3].strip("b/")
             in_reply_to = None
             file_start = True

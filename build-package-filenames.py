@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/local/bin/python
 """
 A tiny little script that reads through the tags file and generates a file `.package-map`. This
 file contains a mapping from package name to file in that package of the format:

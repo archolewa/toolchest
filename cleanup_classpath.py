@@ -1,4 +1,4 @@
-#! /usr/bin/python
+#! /usr/local/bin/python
 """
 Reads a classpath from a local .classpath file, and performs
 some transformations to make it easier to work with:

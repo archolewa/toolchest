@@ -12,9 +12,9 @@
 
 REPO=$(current-repository.sh)
 BRANCH=$(current-branch.sh)
-git diff -D --no-color --patience --src-prefix="" --dst-prefix="" -W $1 > ~/reviews/$REPO/pr-BRANCH.git.diff
+git diff -D --no-color --patience --src-prefix="" --dst-prefix="" -W $1 > ~/reviews/$REPO/pr-$BRANCH.git.diff
 git-diff-overview.sh $1 > ~/reviews/$REPO/pr-BRANCH.overview.diff
 
 home_directory=$(echo ~)
-echo $home_directory"/reviews/$REPO/pr-BRANCH.overview.diff"
-echo $home_directory"/reviews/$REPO/pr-BRANCH.git.diff"
+echo $home_directory"/reviews/$REPO/pr-$BRANCH.overview.diff"
+echo $home_directory"/reviews/$REPO/pr-$BRANCH.git.diff"

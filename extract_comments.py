@@ -1,4 +1,4 @@
-#! /usr/local/bin/python
+#! /Users/acholewa/python_virtualenvs/oath_tools/bin/python
 
 """
 A script that takes five arguments:
@@ -61,4 +61,4 @@ for comment in comments_blob:
             break
     if commented_line and comment["position"]:
         sys.stderr.write("\nWARNING: Failed to find blob for " + diff_hunk[0] + " body: " + comment["body"] + "\n")
-print(''.join(diff_lines).encode("utf-8"))
+print(''.join(diff_lines))
